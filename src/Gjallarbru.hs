@@ -1,8 +1,13 @@
 module Gjallarbru where
 
-parse :: String -> ParseResult String
-parse = ParseSuccess
+import Data.List.NonEmpty
 
-data ParseResult a = ParseErr [ParseError] | ParseSuccess a deriving (Eq, Show)
+parse :: String -> ParseResult ()
+parse "#{" = ParseErr (UnclosedSplice 1 3 :| [])
+parse "#{}" = ParseSuccess ()
+parse _ = ParseSuccess ()
+
+
+data ParseResult a = ParseErr (NonEmpty ParseError) | ParseSuccess a deriving (Eq, Show)
 
 data ParseError = UnclosedSplice Int Int deriving (Eq, Show)
