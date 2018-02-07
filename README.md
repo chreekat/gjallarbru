@@ -15,4 +15,4 @@ What design goals, you ask?
 
     The templates themselves must require no modification.
     Dropping the HTML/CSS into template dirs should require no more work than
-    calling generated functions with the right paramaters. 
+    calling generated functions with the right parameters. 
