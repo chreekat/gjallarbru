@@ -1,14 +1,18 @@
+# THIS PROJECT IS VAPORWARE
+
 Gjallarbru is a tool for authoring web templates with quick feedback and
-placeholders for external data.
+placeholders for external/backend data.
 
-As a proof of concept, I want to see a tool that tracks source files and reloads
-them view in the browser.
+It may already be implemented! [charade](https://github.com/Soostone/charade)
+has the same design goals, and may be the right path forward.
 
-To be test driven, I want to be able to make a test for that. Modifying a source
-file is easy. How do I test that the view is updated? It needs to be a test in
-the browser. Ok, cool. Already we're building a javascript app. So now we have
-a client/server program that is a harness for the app. Sick.
+What design goals, you ask?
 
-I want a server that notices file changes and sends a json message.. somewhere.
-Where? To a websocket endpoint. Can I mock one of those? So, I need to learn
-about websockets.
+1. Get out of the way of HTML/CSS developers
+
+    Let them use their own tools and languages to build HTML/CSS.
+2. Integrate seamlessly into a Haskell web app
+
+    The templates themselves must require no modification.
+    Dropping the HTML/CSS into template dirs should require no more work than
+    calling generated functions with the right paramaters. 
