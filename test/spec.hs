@@ -11,10 +11,10 @@ parseErrors :: TestTree
 parseErrors = testGroup
     "parse errors"
     [ testCase "reports unclosed splice" $ parse "#{" @?= ParseErr
-        (UnclosedSplice 1 3 :| [])
+        (UnclosedSplice 2 :| [])
     , testCase "parses empty splice" $ parse "#{}" @?= ParseSuccess ()
     , testCase "parses unexpected right paren " $ parse "#{)}" @?= ParseErr
-        (UnexpectedRParen 1 3 :| [])
+        (UnexpectedRParen 2 :| [])
     ]
 
 -- What do I want to test? At the top, there are parse errors!
