@@ -1,12 +1,12 @@
 name: gjallarbru
 version: 0.1.0.0
-synopsis: Front end dev iteration tool that 
+synopsis: Frontend development iteration tool
 -- description: 
-license: MIT
+license: AGPL-3
 license-file: LICENSE
 author: Bryan Richter
 maintainer: b@chreekat.net
--- copyright: 
+copyright: Bryan Richter 2018
 category: Web
 build-type: Simple
 -- extra-source-files: 
