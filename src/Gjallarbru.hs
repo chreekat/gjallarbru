@@ -20,9 +20,11 @@ The syntax for templates is:
 -}
 
 parse :: String -> ParseResult ()
-parse "#{" = ParseErr (UnclosedSplice 1 3 :| [])
+parse "#{"  = ParseErr (UnclosedSplice 1 3 :| [])
 parse "#{}" = ParseSuccess ()
-parse _ = ParseSuccess ()
+parse ")"   = ParseSuccess ()
+parse "#{)}" = ParseErr (UnexpectedRParen 1 3 :| [])
+parse _     = ParseSuccess ()
 
 data ParseResult a = ParseErr (NonEmpty ParseError) | ParseSuccess a deriving (Eq, Show)
 data ParseError = UnclosedSplice Int Int deriving (Eq, Show)
