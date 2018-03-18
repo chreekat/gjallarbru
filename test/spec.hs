@@ -5,7 +5,7 @@ import Test.Tasty.HUnit
 import Gjallarbru
 
 main :: IO ()
-main = defaultMain [ parseErrors ]
+main = defaultMain (testGroup "gjallarbru" [parseErrors])
 
 parseErrors :: TestTree
 parseErrors = testGroup
