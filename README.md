@@ -16,3 +16,9 @@ What design goals, you ask?
     The templates themselves must require no modification.
     Dropping the HTML/CSS into template dirs should require no more work than
     calling generated functions with the right parameters. 
+3. Regardless of surface language, use a simple, standards-compliant "core"
+   language.
+
+    Supporting sophisticated UIs may spur the development of syntactic sugar
+    for "widgets" or other abstractions. No matter what this surface language
+    develops into, it must always be desugared to valid HTML5 and CSS3.
