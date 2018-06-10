@@ -1,24 +1,30 @@
 # THIS PROJECT IS VAPORWARE
 
-Gjallarbru is a tool for authoring web templates with quick feedback and
-placeholders for external/backend data.
+Gjallarbru is a tool for authoring HTML/CSS templates with quick development
+feedback and placeholders for programmatic data.
 
-It may already be implemented! [charade](https://github.com/Soostone/charade)
-has the same design goals, and may be the right path forward.
+This project doesn't exist yet. Here are the initial goals.
 
-What design goals, you ask?
+## Design goals
 
 1. Get out of the way of HTML/CSS developers
 
-    Let them use their own tools and languages to build HTML/CSS.
-2. Integrate seamlessly into a Haskell web app
+    Support 100% of modern HTML and CSS, with minimal modification for
+    supporting template variables. Provide additional tools for correctly
+    preparing the templates for integration into web apps.
 
-    The templates themselves must require no modification.
-    Dropping the HTML/CSS into template dirs should require no more work than
-    calling generated functions with the right parameters. 
-3. Regardless of surface language, use a simple, standards-compliant "core"
+2. Integrate templates seamlessly into web apps
+
+    Once the HTML/CSS developer is finished, the templates must not require
+    additional modification to be usable by web apps. Gjallabru will provide
+    tools to assist modifying web apps (in as many languages as possible) to use
+    new/updated templates.
+
+## Implementation considerations
+
+1. Regardless of surface language, use a simple, standards-compliant "core"
    language.
 
     Supporting sophisticated UIs may spur the development of syntactic sugar
     for "widgets" or other abstractions. No matter what this surface language
-    develops into, it must always be desugared to valid HTML5 and CSS3.
+    develops into, it must always desugar to modern HTML and CSS.
