@@ -1,7 +1,16 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Gjallarbru where
 
 import Data.List.NonEmpty
+import Data.Text (Text)
+import qualified Data.Text as T
 
+-- TODO: Write generators for templates, write property tests, add megaparsec,
+-- start parsing, look up recursion schemes to use, structure Gj accordingly,
+-- parse into the right shape for those schemes, start interpreting the data
+-- into haskell code as well as purescript
+
+-- TODO: NonEmptyText, so (GjConst "") isn't equivalent to GjZero
 {-
 
 The syntax for templates is:
@@ -19,12 +28,17 @@ The syntax for templates is:
 
 -}
 
-parse :: String -> ParseResult ()
+data Gj
+    = GjZero
+    | GjConst Text Gj
+    | GjVar Text Gj
+    deriving (Eq, Show)
+
+parse :: Text -> ParseResult Gj
 parse "#{"   = ParseErr (UnclosedSplice 2 :| [])
-parse "#{}"  = ParseSuccess ()
-parse ")"    = ParseSuccess ()
+parse "#{}"  = ParseSuccess GjZero
 parse "#{)}" = ParseErr (UnexpectedRParen 2 :| [])
-parse _      = ParseSuccess ()
+parse s      = ParseSuccess (GjConst s GjZero)
 
 data ParseResult a
     = ParseErr (NonEmpty ParseError)
